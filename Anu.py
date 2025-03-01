@@ -44,7 +44,7 @@ embedder = SentenceTransformer('all-MiniLM-L6-v2')  # Embedding model
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_excel('my_data.xlsx')  # Replace with your dataset file name
+        df = pd.read_csv('my_data.csv')  # Replace with your dataset file name
         if 'question' not in df.columns or 'answer' not in df.columns:
             st.error("The CSV file must contain 'question' and 'answer' columns.")
             st.stop()
@@ -64,8 +64,8 @@ def load_data():
 df, faiss_index = load_data()
 
 # App Header
-st.markdown('<h1 class="chat-font">🤖 Nirmal Gaud Clone Chatbot</h1>', unsafe_allow_html=True)
-st.markdown('<h3 class="chat-font">Ask me anything, and I\'ll respond as Nirmal Gaud!</h3>', unsafe_allow_html=True)
+st.markdown('<h1 class="chat-font">🤖 Anu Clone Chatbot</h1>', unsafe_allow_html=True)
+st.markdown('<h3 class="chat-font">Ask me anything, and I\'ll respond as Anu!</h3>', unsafe_allow_html=True)
 st.markdown("---")
 
 # Function to find the closest matching question using FAISS
@@ -78,7 +78,7 @@ def find_closest_question(query, faiss_index, df):
 
 # Function to generate a refined answer using Gemini
 def generate_refined_answer(query, retrieved_answer):
-    prompt = f"""You are Nirmal Gaud, an AI, ML, and DL instructor. Respond to the following question in a friendly and conversational tone:
+    prompt = f"""You are Anu, an AI & ML Student. Respond to the following question in a friendly and conversational tone:
     Question: {query}
     Retrieved Answer: {retrieved_answer}
     - Provide a detailed and accurate response.
